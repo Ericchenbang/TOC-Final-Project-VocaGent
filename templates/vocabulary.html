@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vocabulary Learning</title>
+    <style>
+        .sentence-box {
+            margin-top: 15px;
+            margin-right: 150px;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+
+
+
+    <script>
+    function toggleBox(id) {
+        var box = document.getElementById(id);
+        box.style.display = (box.style.display !== "block") ? "block" : "none";
+    }
+
+    function jumpToAnchor() {
+        const anchor = "{{ anchor }}";
+        if (anchor) {
+            location.hash = "w_" + anchor;
+        }
+    }
+    </script>
+</head>
+
+
+
+
+<body onload="jumpToAnchor()">
+
+<h1>Vocabulary Learner</h1>
+
+{% for w in words %}
+<div id="w_{{ w.word }}" style="margin-bottom: 30px;">
+
+    <h2>{{ w.word }} ({{ w.part_of_speech }})</h2>
+    <p><b>Translation：</b>{{ w["zh-Hant_definition"] }}</p>
+    <p><b>Sentence：</b>{{ w.example_sentence }}</p>
+
+    <button onclick="toggleBox('box_{{ w.word }}')">Let's make sentence</button>
+
+
+    <div id="box_{{ w.word }}" class="sentence-box"
+     style="display: {% if w.word in feedback %}block{% else %}none{% endif %};">
+        <form action="/check_sentence" method="POST">
+            <input type="hidden" name="level" value="{{ level }}">
+            <input type="hidden" name="count" value="{{ words|length }}">
+            <input type="hidden" name="word" value="{{ w.word }}">
+
+            <label>Please type your sentence：</label><br>
+            <textarea name="sentence" rows="3" cols="40" required></textarea>
+            <br><br>
+
+            <button type="submit">Submit your sentence</button>
+        </form>
+
+        <!-- 如果某單字有回饋，就顯示在此 -->
+        {% if w.word in feedback %}
+            <h4>Result：</h4>
+            <p><b>Your sentence：</b> {{ feedback[w.word].user_sentence }}</p>
+            <p>
+                {% if feedback[w.word].is_correct %}
+                    ✔️ Correct！
+                {% else %}
+                    ❌ False...
+                {% endif %}
+            </p>
+            <p>{{ feedback[w.word].explanation }}</p>
+        {% endif %}
+    </div>
+
+    <hr>
+</div>
+{% endfor %}
+
+<a href="/">Back to home</a>
+
+</body>
+</html>
