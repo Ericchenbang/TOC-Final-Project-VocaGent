@@ -1,62 +1,122 @@
 [
   {
-    "word": "detained",
+    "word": "game",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "比賽",
+    "example_sentence": "It was a remarkable Premier League game."
+  },
+  {
+    "word": "win",
     "part_of_speech": "verb",
-    "zh-Hant_definition": "被拘留、扣押",
-    "example_sentence": "The person of interest was detained at a hotel in the town of Coventry in the early hours."
+    "zh-Hant_definition": "獲勝；贏得",
+    "example_sentence": "Manchester United tried to win the game."
   },
   {
-    "word": "released",
+    "word": "team",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "球隊",
+    "example_sentence": "Both teams showed attacking football."
+  },
+  {
+    "word": "goal",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "進球",
+    "example_sentence": "United scored a goal in the first half."
+  },
+  {
+    "word": "player",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "球員",
+    "example_sentence": "The players fought hard for the point."
+  },
+  {
+    "word": "coach",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "教練",
+    "example_sentence": "Bournemouth coach Andoni Iraola spoke after the match."
+  },
+  {
+    "word": "fan",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "球迷",
+    "example_sentence": "Fans love to see exciting football."
+  },
+  {
+    "word": "match",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "比賽",
+    "example_sentence": "The match ended in a 2‑2 draw."
+  },
+  {
+    "word": "lead",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "領先",
+    "example_sentence": "United had a lead at half time."
+  },
+  {
+    "word": "score",
     "part_of_speech": "verb",
-    "zh-Hant_definition": "釋放、解除羈押",
-    "example_sentence": "Officials detained and released a previous \"person of interest\"."
+    "zh-Hant_definition": "得分；進球",
+    "example_sentence": "Bournemouth managed to score twice."
   },
   {
-    "word": "vigil",
+    "word": "attack",
     "part_of_speech": "noun",
-    "zh-Hant_definition": "燭光守夜、守夜儀式",
-    "example_sentence": "On Sunday evening, the community gathered for a candlelit vigil honoring victims of the shooting."
+    "zh-Hant_definition": "進攻",
+    "example_sentence": "United showed strong attack in the first half."
   },
   {
-    "word": "investigation",
-    "part_of_speech": "noun",
-    "zh-Hant_definition": "調查、偵查",
-    "example_sentence": "The investigation is ongoing and authorities are searching for additional video evidence."
-  },
-  {
-    "word": "authorities",
-    "part_of_speech": "noun",
-    "zh-Hant_definition": "當局、官方機關",
-    "example_sentence": "Authorities did not say what had prompted them to detain the person in the first place."
-  },
-  {
-    "word": "campaign",
-    "part_of_speech": "noun",
-    "zh-Hant_definition": "持續的行動或運動；此處指全力以赴的行動",
-    "example_sentence": "FBI Director Kash Patel said his agency will continue an all‑out 24/7 campaign until justice is fully served."
-  },
-  {
-    "word": "critical",
-    "part_of_speech": "adjective",
-    "zh-Hant_definition": "危急的、病情危重的",
-    "example_sentence": "One of those injured in the incident was in a critical condition."
-  },
-  {
-    "word": "stable",
-    "part_of_speech": "adjective",
-    "zh-Hant_definition": "病情穩定的、狀態平穩的",
-    "example_sentence": "Seven others remained stable while another had been discharged from the hospital."
-  },
-  {
-    "word": "discharged",
+    "word": "defend",
     "part_of_speech": "verb",
-    "zh-Hant_definition": "出院、解除（醫療）限制",
-    "example_sentence": "Another patient had been discharged from the hospital after treatment."
+    "zh-Hant_definition": "防守",
+    "example_sentence": "They struggled to defend after conceding."
   },
   {
-    "word": "vigilant",
+    "word": "first",
     "part_of_speech": "adjective",
-    "zh-Hant_definition": "警惕的、保持警覺的",
-    "example_sentence": "The university asked every member of the Brown community to be vigilant in their own activities on campus."
+    "zh-Hant_definition": "第一的；最初的",
+    "example_sentence": "In the first half they created many chances."
+  },
+  {
+    "word": "second",
+    "part_of_speech": "adjective",
+    "zh-Hant_definition": "第二的；次要的",
+    "example_sentence": "In the second half United fell behind."
+  },
+  {
+    "word": "home",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "主場",
+    "example_sentence": "United played at home at Old Trafford."
+  },
+  {
+    "word": "away",
+    "part_of_speech": "adjective",
+    "zh-Hant_definition": "客場的；離開的",
+    "example_sentence": "Bournemouth played away from home."
+  },
+  {
+    "word": "point",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "分數；積分",
+    "example_sentence": "The draw gave United one point."
+  },
+  {
+    "word": "season",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "賽季",
+    "example_sentence": "It has been an exciting season."
+  },
+  {
+    "word": "injury",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "受傷",
+    "example_sentence": "Tyler Adams left the game with an injury."
+  },
+  {
+    "word": "system",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "系統；戰術",
+    "example_sentence": "Amorim discussed his tactical system."
   }
 ]

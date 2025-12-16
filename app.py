@@ -352,6 +352,17 @@ def cloze_select():
     with open('data/cloze/input.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
+    service = EnglishLearningService();
+    level = session.get('cefr')
+    output_path = "data/cloze/cloze.json"
+    success = service.generate_cloze_test(
+        word_list=selected_words,
+        CEFR=level,
+        output_path=output_path
+    )
+    if not success:
+        return "Failed to generate cloze test", 500
+
     # show cloze article
     return redirect('/cloze_play')
 
@@ -466,6 +477,15 @@ def hangman():
     session["hangman_wrong"] = 0
     session["hangman_hint_used"] = False
 
+    service = EnglishLearningService()
+
+    level = session.get('cefr')
+    output_path = "data/hangman/describe.txt"
+    service.generate_hangman_hint(
+        word=answer,
+        CEFR=level,
+        output_path=output_path
+    )
 
     masked = " ".join("_" for _ in answer)
 
@@ -531,9 +551,15 @@ def hangman_hint():
     wrong = session.get("hangman_wrong", 0) + 1
     session["hangman_wrong"] = wrong
 
-    with open('data/hangman/describe.txt', 'r', encoding='utf-8') as f:
+    hint_path = 'data/hangman/describe.txt'
+    with open(hint_path, 'r', encoding='utf-8') as f:
         hint_text = f.read()
-
+    if not os.path.exists(hint_path):
+        return jsonify({
+            "error": "hint_not_ready",
+            "wrong": wrong
+        })
+    
     lose = wrong >= 6
 
     return jsonify({

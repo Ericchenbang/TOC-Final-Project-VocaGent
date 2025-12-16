@@ -1,172 +1,106 @@
 {
   "id": "root",
-  "text": "Nnena Kalu wins Turner Prize – impact on Project Ability studio",
+  "text": "Professional Email Communication: Language, Tone, and Perception",
   "children": [
     {
       "id": "n1",
-      "text": "Nnena Kalu – Artist Profile & Achievement",
+      "text": "Common Overused Elements",
       "children": [
         {
           "id": "n1-1",
-          "text": "Personal background",
-          "children": [
-            {
-              "id": "n1-1-1",
-              "text": "Born in Glasgow, moved to England as a child",
-              "children": []
-            },
-            {
-              "id": "n1-1-2",
-              "text": "Autistic with limited verbal communication",
-              "children": []
-            },
-            {
-              "id": "n1-1-3",
-              "text": "Age 59 at time of award",
-              "children": []
-            }
-          ]
+          "text": "Excessive Apologies",
+          "children": []
         },
         {
           "id": "n1-2",
-          "text": "Turner Prize win",
-          "children": [
-            {
-              "id": "n1-2-1",
-              "text": "First learning‑disabled artist to win the prize",
-              "children": []
-            },
-            {
-              "id": "n1-2-2",
-              "text": "Judges' comments: compelling sculptures, beautiful intricate drawings",
-              "children": []
-            },
-            {
-              "id": "n1-2-3",
-              "text": "Significance: broke a stubborn glass ceiling",
-              "children": []
-            }
-          ]
+          "text": "Emojis",
+          "children": []
         },
         {
           "id": "n1-3",
-          "text": "Artistic style & works",
-          "children": [
-            {
-              "id": "n1-3-1",
-              "text": "Brightly coloured sculptures wrapped in ribbon, string, card, VHS tape",
-              "children": []
-            },
-            {
-              "id": "n1-3-2",
-              "text": "Drawings of swirling, tornado‑like vortexes",
-              "children": []
-            },
-            {
-              "id": "n1-3-3",
-              "text": "Creative process described as mesmerizing, with chalk sounds",
-              "children": []
-            }
-          ]
+          "text": "Exclamation Marks",
+          "children": []
+        },
+        {
+          "id": "n1-4",
+          "text": "Kisses / Informal Sign‑offs",
+          "children": []
+        },
+        {
+          "id": "n1-5",
+          "text": "Reassurance Checkers (e.g., \"Just checking\")",
+          "children": []
         }
       ]
     },
     {
       "id": "n2",
-      "text": "Project Ability – Charity & Studio",
+      "text": "Impact on Professional Perception",
       "children": [
         {
           "id": "n2-1",
-          "text": "Mission and support",
-          "children": [
-            {
-              "id": "n2-1-1",
-              "text": "Supports artists of all abilities, including learning disabilities",
-              "children": []
-            },
-            {
-              "id": "n2-1-2",
-              "text": "Provides studio space in Glasgow's Trongate",
-              "children": []
-            }
-          ]
+          "text": "Credibility & Authority",
+          "children": []
         },
         {
           "id": "n2-2",
-          "text": "Role in Kalu's career",
-          "children": [
-            {
-              "id": "n2-2-1",
-              "text": "Hosted her first solo exhibition at Glasgow International 2018",
-              "children": []
-            },
-            {
-              "id": "n2-2-2",
-              "text": "Executive Artistic Director Elisabeth Gibson observed her creative process",
-              "children": []
-            },
-            {
-              "id": "n2-2-3",
-              "text": "Provided visibility leading to further opportunities",
-              "children": []
-            }
-          ]
+          "text": "Perceived Seniority & Competence",
+          "children": []
+        },
+        {
+          "id": "n2-3",
+          "text": "Gendered Perception (Women vs. Men)",
+          "children": []
+        },
+        {
+          "id": "n2-4",
+          "text": "Risk of Being Seen as a People‑Pleaser",
+          "children": []
         }
       ]
     },
     {
       "id": "n3",
-      "text": "Community Reactions",
+      "text": "Expert Insights",
       "children": [
         {
           "id": "n3-1",
-          "text": "Fellow artists",
+          "text": "Hannah Salton (Career Coach)",
           "children": [
             {
               "id": "n3-1-1",
-              "text": "Kendal (18) – “anyone can be an artist, regardless of struggles”",
+              "text": "Reasons for Overuse (gender bias, people‑pleasing)",
               "children": []
             },
             {
               "id": "n3-1-2",
-              "text": "Andrew (50) – learning disabled, Down's syndrome, inspired and hopeful",
+              "text": "Effects (less impact, credibility issues)",
+              "children": []
+            },
+            {
+              "id": "n3-1-3",
+              "text": "Advice (reduce filler, use AI tools for review)",
               "children": []
             }
           ]
         },
         {
           "id": "n3-2",
-          "text": "Charity leadership",
+          "text": "William Hanson (Etiquette Coach)",
           "children": [
             {
               "id": "n3-2-1",
-              "text": "Elisabeth Gibson – thrilled, believes win will reduce judgment",
+              "text": "Emojis convey infantile connotation",
               "children": []
             },
             {
               "id": "n3-2-2",
-              "text": "Charlotte Hollinshead – described win as seismic, breaking glass ceiling",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "n3-3",
-          "text": "Critics & public opinion",
-          "children": [
-            {
-              "id": "n3-3-1",
-              "text": "Positive: judges praised intricacy and uniqueness",
+              "text": "Kisses should match real‑life context",
               "children": []
             },
             {
-              "id": "n3-3-2",
-              "text": "Negative: Waldemar Januszcack (Sunday Times) called work “worst art” and accused virtue‑signalling",
-              "children": []
-            },
-            {
-              "id": "n3-3-3",
-              "text": "Gibson’s response – criticism expected, Turner Prize thrives on controversy",
+              "id": "n3-2-3",
+              "text": "Recommend using words and strong command of English",
               "children": []
             }
           ]
@@ -175,50 +109,37 @@
     },
     {
       "id": "n4",
-      "text": "Impact & Inspiration",
+      "text": "Recommendations for Improvement",
       "children": [
         {
           "id": "n4-1",
-          "text": "Motivation for other artists at the studio",
-          "children": [
-            {
-              "id": "n4-1-1",
-              "text": "Shows that learning disabilities are not a barrier to success",
-              "children": []
-            },
-            {
-              "id": "n4-1-2",
-              "text": "Encourages artists to pursue ambitious goals, e.g., winning awards",
-              "children": []
-            }
-          ]
+          "text": "Maintain warmth without overuse",
+          "children": []
         },
         {
           "id": "n4-2",
-          "text": "Future goals",
-          "children": [
-            {
-              "id": "n4-2-1",
-              "text": "Andrew expressed desire to win the Turner Prize himself",
-              "children": []
-            }
-          ]
+          "text": "Use clear, confident language",
+          "children": []
         },
         {
           "id": "n4-3",
-          "text": "Broader perception of learning‑disabled artists",
-          "children": [
-            {
-              "id": "n4-3-1",
-              "text": "Potential shift towards greater acceptance and less judgment",
-              "children": []
-            },
-            {
-              "id": "n4-3-2",
-              "text": "Increased visibility may open more exhibition opportunities",
-              "children": []
-            }
-          ]
+          "text": "Limit exclamation marks and emojis",
+          "children": []
+        },
+        {
+          "id": "n4-4",
+          "text": "Avoid unnecessary apologies",
+          "children": []
+        },
+        {
+          "id": "n4-5",
+          "text": "Leverage AI tools for draft review",
+          "children": []
+        },
+        {
+          "id": "n4-6",
+          "text": "Observe email styles and note emotional impact",
+          "children": []
         }
       ]
     }

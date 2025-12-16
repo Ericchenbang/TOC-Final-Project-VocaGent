@@ -2,65 +2,67 @@
   {
     "id": "Q1",
     "type": "Multiple_Answer",
-    "question": "Which of the following statements are true about the Bondi Beach attack according to the article?",
+    "question": "Which of the following habits are mentioned in the article as potentially undermining professionalism in email communication?",
     "choices": [
-      "The attack targeted a Hanukkah celebration.",
-      "At least 15 civilians were killed.",
-      "The alleged shooters were a father and his son.",
-      "The older shooter survived the incident."
+      "Apologizing unnecessarily",
+      "Using smiley faces",
+      "Including detailed data",
+      "Adding exclamation marks",
+      "Signing off with a kiss"
     ],
     "correct_choices": [
       0,
       1,
-      2
+      3,
+      4
     ],
-    "explanation": "The article states the attack was aimed at a Hanukkah celebration, at least 15 civilians were killed, and the shooters were a father and his son, with the older man dying at the scene."
+    "explanation": "The article lists apologising, smiley faces/emojis, exclamation marks, and kisses as habits that can diminish how seriously a writer is taken."
   },
   {
     "id": "Q2",
     "type": "True_Or_False",
-    "question": "Michael Vaughan was inside a restaurant that was more than a kilometer away from Bondi Beach when he heard the gunshots.",
-    "answer": false,
-    "explanation": "Vaughan was locked inside a restaurant only a few hundred yards (approximately 300 yards) from Bondi Beach, not more than a kilometer away."
+    "question": "Women use exclamation marks three times more often than men, according to the study cited in the article.",
+    "answer": true,
+    "explanation": "Hannah Salton cites a recent Journal of Experimental Social Psychology study that found women use exclamation marks three times more often than men."
   },
   {
     "id": "Q3",
     "type": "Multiple_Answer",
-    "question": "What measures or tributes were planned for the third Ashes Test in Adelaide?",
+    "question": "According to Hannah Salton, what can be a consequence of consistently using people‑pleasing language in emails?",
     "choices": [
-      "A moment of silence before the match.",
-      "Both teams wearing black armbands.",
-      "The match was cancelled.",
-      "A special charity match after the test."
+      "Being perceived as less capable",
+      "Gaining more promotions",
+      "Being seen as overly confident",
+      "Creating an impression of not backing oneself"
     ],
     "correct_choices": [
       0,
-      1
+      3
     ],
-    "explanation": "Cricket Australia confirmed a moment of silence and that both sides would wear black armbands; the match was not cancelled and no charity match was mentioned."
+    "explanation": "Salton explains that a continual people‑pleasing tone can lead others to view the writer as less capable and as someone who doesn’t back themselves."
   },
   {
     "id": "Q4",
     "type": "True_Or_False",
-    "question": "According to the article, Nathan Lyon was playing for Queensland during the incident.",
+    "question": "William Hanson recommends using emojis in professional emails to convey warmth.",
     "answer": false,
-    "explanation": "The article identifies Nathan Lyon as a spinner for New South Wales, not Queensland."
+    "explanation": "Hanson warns that emojis can backfire, giving an infantile connotation, and advises against using them in professional email communication."
   },
   {
     "id": "Q5",
     "type": "Multiple_Answer",
-    "question": "Which individuals expressed their condolences or support following the attack?",
+    "question": "Which strategies do the experts suggest for reducing excessive filler in email writing without losing personality?",
     "choices": [
-      "England vice-captain Harry Brook",
-      "South Australia Premier Peter Malinauskas",
-      "England & Wales Cricket Board",
-      "Australian Prime Minister Anthony Albanese"
+      "Reviewing drafts with AI tools",
+      "Removing all punctuation",
+      "Paying attention to the tone of received emails",
+      "Filtering out all emojis",
+      "Using more qualifiers"
     ],
     "correct_choices": [
       0,
-      1,
       2
     ],
-    "explanation": "Harry Brook, Peter Malinauskas, and the England & Wales Cricket Board all issued statements of support; the article does not mention a statement from the Australian Prime Minister."
+    "explanation": "Salton mentions AI tools can help strip filler, and both experts advise observing how different email styles feel to gauge excess while preserving personal style."
   }
 ]

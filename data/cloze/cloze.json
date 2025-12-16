@@ -1,17 +1,37 @@
 {
-  "question": "During the town hall meeting, the audience's ___[1]___ was mixed; some members felt reassured while others remained skeptical. To address the concerns, the council decided to adopt a pragmatic ___[2]___, focusing on transparent communication and incremental policy changes. The speaker highlighted how a careful ___[3]___ of scientific data and personal testimonies could bridge the gap between experts and residents, ultimately fostering a shared sense of responsibility.",
+  "question": "The ___[1]___ scored a ___[2]___ while the ___[3]___ shouted, and the coach will ___[4]___ them to the ___[5]___ game ___[6]___ even after a player’s ___[7]___, using a new ___[8]___.",
   "ans": [
     {
       "idx": 1,
-      "word": "reaction"
+      "word": "team"
     },
     {
       "idx": 2,
-      "word": "approach"
+      "word": "goal"
     },
     {
       "idx": 3,
-      "word": "conjunction"
+      "word": "fan"
+    },
+    {
+      "idx": 4,
+      "word": "lead"
+    },
+    {
+      "idx": 5,
+      "word": "second"
+    },
+    {
+      "idx": 6,
+      "word": "away"
+    },
+    {
+      "idx": 7,
+      "word": "injury"
+    },
+    {
+      "idx": 8,
+      "word": "system"
     }
   ]
 }

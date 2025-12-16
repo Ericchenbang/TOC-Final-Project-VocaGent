@@ -1,7 +1,7 @@
 [
   {
-    "word": "released",
-    "is_correct": false,
-    "explanation": "在句子 \"Let's released the por guy.\" 中，'released' 為過去分詞，但在 'Let's'（let us）構成的祈使句後應使用動詞原形 'release'，因此用法不正確。正確寫法應為 \"Let's release the ...\"。"
+    "word": "first",
+    "is_correct": true,
+    "explanation": "在句子 \"I am the first one.\" 中，'first' 作為形容詞修飾名詞 'one'，表示在某個序列或群體中位居首位，語意正確且符合英文語法。"
   }
 ]
