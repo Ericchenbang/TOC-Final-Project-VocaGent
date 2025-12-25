@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash
 import json
 import os
 import re
@@ -83,20 +83,35 @@ def generate_mindmap_route():
     category = session.get('current_article_category')
     article_id = session.get('current_article_id')
     article_text = session.get('current_article_text')
+
+    if not category:
+        flash('Invalid state of article, please re-choose category of news :<', 'warning')
+        return redirect(url_for('index'))
+
+    
     if not article_id or not article_text:
-        return redirect(url_for('news_list', category = category))
+        flash('Please goto news again to generate mindmap~', 'warning')
+        return redirect(url_for('news_list', category=category))
+    
     
     if session.get('mindmap_article_id') == article_id \
        and os.path.exists('data/mindMap.json'):
         return redirect(url_for('mindmap'))
 
-    service = EnglishLearningService()
-    service.generate_mind_map(
-        article_text,
-        output_path='data/mindMap.json'
-    )
-    session['mindmap_article_id'] = article_id
-    return redirect(url_for('mindmap'))
+    try:
+        service = EnglishLearningService()
+        service.generate_mind_map(
+            article_text,
+            output_path='data/mindMap.json'
+        )
+        session['mindmap_article_id'] = article_id
+        return redirect(url_for('mindmap'))
+
+    except Exception as e:
+        print('[MindMap Error]', e)
+        flash('Fail to generate mindmap, please try again', 'error')
+        return redirect(url_for('news_list', category=category))
+    
 
 @app.route('/mindmap')
 def mindmap():
@@ -115,8 +130,16 @@ def generate_reading_route():
     category = session.get('current_article_category')
     article_id = session.get('current_article_id')
     article_text = session.get('current_article_text')
+    
+    if not category:
+        flash('Invalid state of article, please re-choose category of news', 'warning')
+        return redirect(url_for('index'))
+
+    
     if not article_id or not article_text:
-        return redirect(url_for('news_list', category = category))
+        flash('Please goto news again to generate reading test ~', 'warning')
+        return redirect(url_for('news_list', category=category))
+
     
     if session.get('reading_article_id') == article_id \
        and os.path.exists('data/reading.json'):
@@ -146,8 +169,8 @@ def submit_reading():
     with open('data/reading.json', 'r', encoding='utf-8') as f:
         questions = json.load(f)
         
-    for q in questions:
-        qid = q["id"]
+    for idx, q in enumerate(questions):
+        qid = q.get("id", f"q_{idx}")
 
         if q["type"] == "True_Or_False":
             if request.form.get(qid) is None:
@@ -158,8 +181,8 @@ def submit_reading():
                 return redirect(url_for('reading'))
 
     result = {}
-    for q in questions:
-        qid = q["id"]
+    for idx, q in enumerate(questions):
+        qid = q.get("id", f"q_{idx}")
 
         if q["type"] == "True_Or_False":
             user_answer = request.form.get(qid)
@@ -193,8 +216,6 @@ def submit_reading():
         questions=questions,
         result=result
     )
-
-
 
 
 
@@ -437,6 +458,12 @@ def submit_cloze():
 
         if not r:
             return f'<input type="text" name="blank_{idx}" style="width:120px;">'
+
+        # if correct，add readonly attribute and correct type
+        if r["is_correct"]:
+            return f'<input type="text" name="blank_{idx}" value="{r["user"]}" readonly class="cloze-input correct">'
+        else:
+            return f'<input type="text" name="blank_{idx}" value="{r["user"]}" class="cloze-input error">'
 
         color = "#c8f7c5" if r["is_correct"] else "#f7c5c5"
         readonly = "readonly" if r["is_correct"] else ""

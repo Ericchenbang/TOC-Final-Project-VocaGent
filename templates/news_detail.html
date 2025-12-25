@@ -6,6 +6,7 @@
     <title>{{ article['title'] }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="content-wrapper article-detail-page">
@@ -29,14 +30,15 @@
 
             <section class="article-content">
                 <p>{{ article['content'] | replace('\n\n', '</p><p>') | safe }}</p> 
-                </section>
+            </section>
         </article>
 
         <hr class="separator">
 
         <div class="action-bar learning-controls-container">
             <h2 class="form-title">Customize Your Learning</h2>
-            <form action="{{ url_for('start_learn') }}" method="post" class="learning-form">
+            
+            <form action="{{ url_for('start_learn') }}" method="post" class="learning-form" id="learningForm">
                 <input type="hidden" name="category" value="{{ category }}">
                 <input type="hidden" name="article_id" value="{{ article.id }}">
                 <div class="form-row">
@@ -59,21 +61,58 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="primary-action-btn large-btn full-width-mobile">
+                <button type="submit" class="primary-action-btn large-btn">
                     👨‍🏫 Start Vocabulary Learning
                 </button>
-
-                
             </form>
-        </div>
-        <form action="/generate_mindmap" method="POST">
-            <button type="submit">🧠 心智圖</button>
-        </form>
 
-        <form action="/generate_reading" method="POST">
-            <button type="submit">📖 閱讀測驗</button>
-        </form>
+            <div class="secondary-actions">
+                <form action="/generate_mindmap" method="POST" class="flex-form" id="mindmapForm">
+                    <button type="submit" class="outline-btn">🧠 Mind Map</button>
+                </form>
+
+                <form action="/generate_reading" method="POST" class="flex-form" id="readingForm">
+                    <button type="submit" class="outline-btn">📜 Reading Test</button>
+                </form>
+            </div>
         </div>
-        
+    </div>
+
+    <script>
+        function showLoading(title, html) {
+            Swal.fire({
+                title: title,
+                html: html,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+        }
+
+        const forms = {
+            'learningForm': ['Analyzing Article...', 'LLM is selecting key vocabularies and creating examples.'],
+            'mindmapForm': ['Mapping Ideas...', 'LLM is breaking down the article into a visual structure.'],
+            'readingForm': ['Generating Quiz...', 'LLM is creating personalized questions based on the content.']
+        };
+
+        Object.keys(forms).forEach(id => {
+            const form = document.getElementById(id);
+            if (form) {
+                form.onsubmit = function() {
+                    showLoading(forms[id][0], forms[id][1]);
+                };
+            }
+        });
+
+        // When back to news, loading should not show on screen
+        window.addEventListener('pageshow', function(event) {
+            // If persisted is true, means that page is recover form browser bfcache
+            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                Swal.close(); // close all SweetAlert 
+            }
+    });
+    </script>
 </body>
 </html>

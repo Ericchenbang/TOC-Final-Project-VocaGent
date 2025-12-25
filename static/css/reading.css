@@ -1,0 +1,276 @@
+/* --- Reading Quiz Global Settings --- */
+:root {
+    --primary-blue: #4A90E2;
+    --success-green: #22c55e;
+    --error-red: #ef4444;
+    --bg-light: #f1f5f9;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --transition: all 0.2s ease;
+}
+
+.quiz-body {
+    background-color: var(--bg-light);
+    font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+    color: var(--text-dark);
+    margin: 0;
+    padding: 20px;
+}
+
+.quiz-container {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+/* --- Header & Progress Dashboard --- */
+.quiz-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.quiz-badge {
+    background: #e2e8f0;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.quiz-progress-bar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.progress-step {
+    width: 40px;
+    height: 40px;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.progress-step.correct {
+    background: var(--success-green);
+    border-color: var(--success-green);
+    color: white;
+}
+
+.progress-step.incorrect {
+    background: var(--error-red);
+    border-color: var(--error-red);
+    color: white;
+}
+
+/* --- Question Cards --- */
+.question-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 35px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.q-number {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.question-title h3 {
+    margin: 12px 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+.type-hint {
+    color: var(--text-muted);
+    font-weight: 400;
+    display: block;
+    margin-top: 5px;
+}
+
+/* --- Interactive Options --- */
+.options-container {
+    margin-top: 25px;
+}
+
+.option-label {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    background: #fff;
+    position: relative;
+    user-select: none;
+}
+
+/* 隱藏原生 input 但維持功能 */
+.option-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* 點選時的外框變色 */
+.option-label:hover:not(.disabled-label) {
+    border-color: var(--primary-blue);
+    background-color: #f8fbff;
+}
+
+.option-label:has(input:checked) {
+    border-color: var(--primary-blue);
+    background-color: #f0f7ff;
+}
+
+/* 送出後的禁用狀態 */
+.disabled-label {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* --- 自定義指示器 (Radio/Checkbox) --- */
+.custom-indicator {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #cbd5e1;
+    border-radius: 50%; /* 圓形 */
+    margin-right: 15px;
+    flex-shrink: 0;
+    background: white;
+    position: relative;
+    transition: var(--transition);
+}
+
+.checkbox-style {
+    border-radius: 6px; /* 方形 */
+}
+
+/* 選中狀態的指示器顏色 */
+.option-label input:checked + .custom-indicator {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+/* 選中時內部的打勾或圓點 */
+.option-label input:checked + .custom-indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+}
+
+/* --- Result & Feedback Styles --- */
+.option-label.is-correct {
+    border-color: var(--success-green) !important;
+    background-color: #f0fdf4 !important;
+    color: #166534;
+}
+
+.option-label.is-wrong {
+    border-color: var(--error-red) !important;
+    background-color: #fef2f2 !important;
+    color: #991b1b;
+}
+
+.feedback-box {
+    margin-top: 25px;
+    padding: 18px 22px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.feedback-box.success {
+    background-color: #f0fdf4;
+    border-left: 5px solid var(--success-green);
+}
+
+.feedback-box.error {
+    background-color: #fffaf5;
+    border-left: 5px solid #f97316;
+}
+
+/* --- Footer Actions --- */
+.quiz-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 40px;
+}
+
+.submit-quiz-btn {
+    background: #1e293b;
+    color: white;
+    border: none;
+    padding: 18px 45px;
+    border-radius: 12px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.submit-quiz-btn:hover {
+    background: #0f172a;
+    transform: translateY(-2px);
+}
+
+.submitted-notice {
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--primary-blue);
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 600px) {
+    .question-card {
+        padding: 20px;
+    }
+    .quiz-progress-bar {
+        gap: 8px;
+    }
+    .progress-step {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    .display-word {
+        font-size: 2.2rem;
+    }
+}

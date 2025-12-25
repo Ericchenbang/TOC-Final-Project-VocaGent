@@ -1,106 +1,183 @@
 {
   "id": "root",
-  "text": "Professional Email Communication: Language, Tone, and Perception",
+  "text": "John Robertson – Life and Career",
   "children": [
     {
       "id": "n1",
-      "text": "Common Overused Elements",
+      "text": "Early Life & Youth",
       "children": [
         {
           "id": "n1-1",
-          "text": "Excessive Apologies",
+          "text": "Born 1953 in Viewpark, North Lanarkshire",
           "children": []
         },
         {
           "id": "n1-2",
-          "text": "Emojis",
+          "text": "Played for Drumchapel Amateurs",
           "children": []
         },
         {
           "id": "n1-3",
-          "text": "Exclamation Marks",
+          "text": "Scotland youth international",
           "children": []
         },
         {
           "id": "n1-4",
-          "text": "Kisses / Informal Sign‑offs",
-          "children": []
-        },
-        {
-          "id": "n1-5",
-          "text": "Reassurance Checkers (e.g., \"Just checking\")",
+          "text": "Joined Nottingham Forest May 1970",
           "children": []
         }
       ]
     },
     {
       "id": "n2",
-      "text": "Impact on Professional Perception",
+      "text": "Playing Career – Nottingham Forest (first spell)",
       "children": [
         {
           "id": "n2-1",
-          "text": "Credibility & Authority",
+          "text": "Debut 1970",
           "children": []
         },
         {
           "id": "n2-2",
-          "text": "Perceived Seniority & Competence",
+          "text": "Key player under Brian Clough (1975‑1983)",
           "children": []
         },
         {
           "id": "n2-3",
-          "text": "Gendered Perception (Women vs. Men)",
+          "text": "243 consecutive games (Dec 1976‑Dec 1980)",
           "children": []
         },
         {
           "id": "n2-4",
-          "text": "Risk of Being Seen as a People‑Pleaser",
+          "text": "Major trophies",
+          "children": [
+            {
+              "id": "n2-4-1",
+              "text": "European Cup 1979, 1980 (scored 1980 final goal)",
+              "children": []
+            },
+            {
+              "id": "n2-4-2",
+              "text": "First Division titles (1977‑78, 1978‑79)",
+              "children": []
+            },
+            {
+              "id": "n2-4-3",
+              "text": "UEFA Super Cup 1979",
+              "children": []
+            },
+            {
+              "id": "n2-4-4",
+              "text": "League Cup 1978 (scored penalty winner in replay)",
+              "children": []
+            },
+            {
+              "id": "n2-4-5",
+              "text": "FA Charity Shield 1978",
+              "children": []
+            },
+            {
+              "id": "n2-4-6",
+              "text": "Anglo‑Scottish Cup 1978",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "n2-5",
+          "text": "Brian Clough’s quote: “Picasso of our game”",
           "children": []
         }
       ]
     },
     {
       "id": "n3",
-      "text": "Expert Insights",
+      "text": "International Career – Scotland",
       "children": [
         {
           "id": "n3-1",
-          "text": "Hannah Salton (Career Coach)",
-          "children": [
-            {
-              "id": "n3-1-1",
-              "text": "Reasons for Overuse (gender bias, people‑pleasing)",
-              "children": []
-            },
-            {
-              "id": "n3-1-2",
-              "text": "Effects (less impact, credibility issues)",
-              "children": []
-            },
-            {
-              "id": "n3-1-3",
-              "text": "Advice (reduce filler, use AI tools for review)",
-              "children": []
-            }
-          ]
+          "text": "28 caps",
+          "children": []
         },
         {
           "id": "n3-2",
-          "text": "William Hanson (Etiquette Coach)",
+          "text": "Winning goal vs England 1981",
+          "children": []
+        },
+        {
+          "id": "n3-3",
+          "text": "Goal vs New Zealand at 1982 World Cup",
+          "children": []
+        },
+        {
+          "id": "n3-4",
+          "text": "Youth level representation",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "n4",
+      "text": "Transfers & Later Playing Years",
+      "children": [
+        {
+          "id": "n4-1",
+          "text": "Sold to Derby County 1983 (contested fee)",
+          "children": []
+        },
+        {
+          "id": "n4-2",
+          "text": "Injury at Derby hampered progress",
+          "children": []
+        },
+        {
+          "id": "n4-3",
+          "text": "Returned to Nottingham Forest 1985 (no former form)",
+          "children": []
+        },
+        {
+          "id": "n4-4",
+          "text": "Non‑league clubs: Corby Town, Stamford, Grantham Town",
+          "children": []
+        },
+        {
+          "id": "n4-5",
+          "text": "Impact on Brian Clough‑Peter Taylor relationship",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "n5",
+      "text": "Coaching & Assistant Manager Career",
+      "children": [
+        {
+          "id": "n5-1",
+          "text": "Assistant to Martin O’Neill",
           "children": [
             {
-              "id": "n3-2-1",
-              "text": "Emojis convey infantile connotation",
+              "id": "n5-1-1",
+              "text": "Wycombe Wanderers – promotion from Conference and Third Division",
               "children": []
             },
             {
-              "id": "n3-2-2",
-              "text": "Kisses should match real‑life context",
+              "id": "n5-1-2",
+              "text": "Norwich City – coaching role",
               "children": []
             },
             {
-              "id": "n3-2-3",
-              "text": "Recommend using words and strong command of English",
+              "id": "n5-1-3",
+              "text": "Leicester City – promotion to Premier League, League Cup win 1997",
+              "children": []
+            },
+            {
+              "id": "n5-1-4",
+              "text": "Celtic – 3 SPL titles, 3 Scottish Cups, 1 League Cup, UEFA Cup final 2003",
+              "children": []
+            },
+            {
+              "id": "n5-1-5",
+              "text": "Aston Villa – League Cup runner‑up 2010 (final season as coach)",
               "children": []
             }
           ]
@@ -108,37 +185,32 @@
       ]
     },
     {
-      "id": "n4",
-      "text": "Recommendations for Improvement",
+      "id": "n6",
+      "text": "Legacy & Personal Anecdotes",
       "children": [
         {
-          "id": "n4-1",
-          "text": "Maintain warmth without overuse",
+          "id": "n6-1",
+          "text": "Brian Clough’s transformation quote in biography “Supertramp”",
           "children": []
         },
         {
-          "id": "n4-2",
-          "text": "Use clear, confident language",
+          "id": "n6-2",
+          "text": "John McGovern’s comparison to Ryan Giggs with two good feet",
           "children": []
         },
         {
-          "id": "n4-3",
-          "text": "Limit exclamation marks and emojis",
+          "id": "n6-3",
+          "text": "2015 Nottingham Post poll – top favourite Forest player",
           "children": []
         },
         {
-          "id": "n4-4",
-          "text": "Avoid unnecessary apologies",
+          "id": "n6-4",
+          "text": "Described by Clough as ‘scruffy, unfit, uninterested waste of time’ turned elite deliverer",
           "children": []
         },
         {
-          "id": "n4-5",
-          "text": "Leverage AI tools for draft review",
-          "children": []
-        },
-        {
-          "id": "n4-6",
-          "text": "Observe email styles and note emotional impact",
+          "id": "n6-5",
+          "text": "Died 2025 at age 72",
           "children": []
         }
       ]

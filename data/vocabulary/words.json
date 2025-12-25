@@ -1,122 +1,86 @@
 [
   {
-    "word": "game",
+    "word": "food",
     "part_of_speech": "noun",
-    "zh-Hant_definition": "比賽",
-    "example_sentence": "It was a remarkable Premier League game."
+    "zh-Hant_definition": "供給身體能量與營養的物質",
+    "example_sentence": "We enjoy a lot of food at the Christmas dinner."
   },
   {
-    "word": "win",
+    "word": "brain",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "控制思考、感覺和行動的器官",
+    "example_sentence": "The brain receives signals from the gut after a meal."
+  },
+  {
+    "word": "sleep",
     "part_of_speech": "verb",
-    "zh-Hant_definition": "獲勝；贏得",
-    "example_sentence": "Manchester United tried to win the game."
+    "zh-Hant_definition": "閉上眼睛休息，使身體和大腦恢復活力",
+    "example_sentence": "Many people feel sleepy and want to sleep after a big lunch."
   },
   {
-    "word": "team",
+    "word": "meal",
     "part_of_speech": "noun",
-    "zh-Hant_definition": "球隊",
-    "example_sentence": "Both teams showed attacking football."
+    "zh-Hant_definition": "一天中吃的一頓食物",
+    "example_sentence": "A festive meal can contain turkey, potatoes and dessert."
   },
   {
-    "word": "goal",
+    "word": "hunger",
     "part_of_speech": "noun",
-    "zh-Hant_definition": "進球",
-    "example_sentence": "United scored a goal in the first half."
+    "zh-Hant_definition": "想吃東西的感覺",
+    "example_sentence": "Hunger makes us look for food quickly."
   },
   {
-    "word": "player",
+    "word": "energy",
     "part_of_speech": "noun",
-    "zh-Hant_definition": "球員",
-    "example_sentence": "The players fought hard for the point."
+    "zh-Hant_definition": "身體活動所需要的力量或活力",
+    "example_sentence": "Carbohydrates give us quick energy after we eat."
   },
   {
-    "word": "coach",
+    "word": "body",
     "part_of_speech": "noun",
-    "zh-Hant_definition": "教練",
-    "example_sentence": "Bournemouth coach Andoni Iraola spoke after the match."
+    "zh-Hant_definition": "包括所有器官和組織的整體",
+    "example_sentence": "The body works hard to keep blood sugar stable."
   },
   {
-    "word": "fan",
+    "word": "study",
     "part_of_speech": "noun",
-    "zh-Hant_definition": "球迷",
-    "example_sentence": "Fans love to see exciting football."
+    "zh-Hant_definition": "對某個主題進行的系統性調查",
+    "example_sentence": "A new study looked at how overeating affects metabolism."
   },
   {
-    "word": "match",
+    "word": "blood",
     "part_of_speech": "noun",
-    "zh-Hant_definition": "比賽",
-    "example_sentence": "The match ended in a 2‑2 draw."
+    "zh-Hant_definition": "在身體裡流動的液體，運送氧氣和營養",
+    "example_sentence": "After the pizza, their blood sugar did not rise much."
   },
   {
-    "word": "lead",
+    "word": "sugar",
     "part_of_speech": "noun",
-    "zh-Hant_definition": "領先",
-    "example_sentence": "United had a lead at half time."
+    "zh-Hant_definition": "甜味的碳水化合物，提供快速能量",
+    "example_sentence": "Too much sugar can raise blood glucose levels."
   },
   {
-    "word": "score",
+    "word": "fat",
+    "part_of_speech": "noun",
+    "zh-Hant_definition": "提供能量且儲存在身體的營養素",
+    "example_sentence": "High‑fat foods are often part of holiday feasts."
+  },
+  {
+    "word": "feel",
     "part_of_speech": "verb",
-    "zh-Hant_definition": "得分；進球",
-    "example_sentence": "Bournemouth managed to score twice."
+    "zh-Hant_definition": "經歷某種感覺或情緒",
+    "example_sentence": "I feel sleepy after eating a large dinner."
   },
   {
-    "word": "attack",
-    "part_of_speech": "noun",
-    "zh-Hant_definition": "進攻",
-    "example_sentence": "United showed strong attack in the first half."
-  },
-  {
-    "word": "defend",
-    "part_of_speech": "verb",
-    "zh-Hant_definition": "防守",
-    "example_sentence": "They struggled to defend after conceding."
-  },
-  {
-    "word": "first",
+    "word": "healthy",
     "part_of_speech": "adjective",
-    "zh-Hant_definition": "第一的；最初的",
-    "example_sentence": "In the first half they created many chances."
+    "zh-Hant_definition": "對身體有益的、沒有疾病的",
+    "example_sentence": "A balanced diet helps keep you healthy."
   },
   {
-    "word": "second",
-    "part_of_speech": "adjective",
-    "zh-Hant_definition": "第二的；次要的",
-    "example_sentence": "In the second half United fell behind."
-  },
-  {
-    "word": "home",
+    "word": "mood",
     "part_of_speech": "noun",
-    "zh-Hant_definition": "主場",
-    "example_sentence": "United played at home at Old Trafford."
-  },
-  {
-    "word": "away",
-    "part_of_speech": "adjective",
-    "zh-Hant_definition": "客場的；離開的",
-    "example_sentence": "Bournemouth played away from home."
-  },
-  {
-    "word": "point",
-    "part_of_speech": "noun",
-    "zh-Hant_definition": "分數；積分",
-    "example_sentence": "The draw gave United one point."
-  },
-  {
-    "word": "season",
-    "part_of_speech": "noun",
-    "zh-Hant_definition": "賽季",
-    "example_sentence": "It has been an exciting season."
-  },
-  {
-    "word": "injury",
-    "part_of_speech": "noun",
-    "zh-Hant_definition": "受傷",
-    "example_sentence": "Tyler Adams left the game with an injury."
-  },
-  {
-    "word": "system",
-    "part_of_speech": "noun",
-    "zh-Hant_definition": "系統；戰術",
-    "example_sentence": "Amorim discussed his tactical system."
+    "zh-Hant_definition": "一段時間內的情緒或心情",
+    "example_sentence": "Hunger can change your mood and make you irritable."
   }
 ]

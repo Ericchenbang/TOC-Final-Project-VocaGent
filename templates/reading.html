@@ -1,126 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Reading Quiz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Quiz | Explorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reading.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <script>
+        // check if every questions are wrote
         function validateQuiz() {
             {% for q in questions %}
                 {% if q.type == "True_Or_False" %}
                     if (!document.querySelector('input[name="{{ q.id }}"]:checked')) {
-                        alert("Please answer all questions before submitting.");
+                        alert("Please answer Question {{ loop.index }}.");
                         return false;
                     }
                 {% elif q.type == "Multiple_Answer" %}
-                    if (document.querySelectorAll(
-                        'input[name="{{ q.id }}"]:checked'
-                    ).length === 0) {
-                        alert("Please answer all questions before submitting.");
+                    if (document.querySelectorAll('input[name="{{ q.id }}"]:checked').length === 0) {
+                        alert("Please select at least one answer for Question {{ loop.index }}.");
                         return false;
                     }
                 {% endif %}
             {% endfor %}
             return true;
         }
-        </script>
+    </script>
 </head>
-<body>
+<body class="quiz-body">
 
-<h1>📖 Reading Quiz</h1>
+    <div class="quiz-container">
+        <header class="quiz-header">
+            <div class="quiz-meta">
+                <span class="quiz-badge">Article Comprehension</span>
+                <h1>📖 Reading Quiz</h1>
+            </div>
+            
+            <div class="quiz-progress-bar">
+                {% for q in questions %}
+                    <div class="progress-step 
+                        {% if result %}
+                            {{ 'correct' if result[q.id].is_correct else 'incorrect' }}
+                        {% endif %}">
+                        {{ loop.index }}
+                    </div>
+                {% endfor %}
+            </div>
+        </header>
 
-<form action="/submit_reading" method="POST" onsubmit="return validateQuiz();">
-
-{% for q in questions %}
-    <hr>
-    <h3>{{ loop.index }}. {{ q.question }}</h3>
-
-    {% if q.type == "True_Or_False" %}
-        {% set correct = q.answer|string|lower %}
-        {% set user = result[q.id].user if result else None %}
-
-        {% for val in ["true", "false"] %}
-            <label
-                {% if result %}
-                    {% if val == correct %}
-                        style="color:green; font-weight:bold;"
-                    {% elif val == user and val != correct %}
-                        style="color:red;"
+        <form action="/submit_reading" method="POST" onsubmit="return validateQuiz();" class="quiz-form">
+            
+            {% for q in questions %}
+            <div class="question-card">
+                <div class="question-title">
+                    <span class="q-number">Question {{ loop.index }}</span>
+                    <h3>{{ q.question }}</h3>
+                    {% if q.type == "Multiple_Answer" %}
+                        <small class="type-hint">(Multiple answers possible)</small>
                     {% endif %}
-                {% endif %}
-            >
-                <input type="radio"
-                    name="{{ q.id }}"
-                    value="{{ val }}"
-                    required
-                    {% if user == val %}checked{% endif %}
-                    {% if result %}disabled{% endif %}>
-                {{ val|capitalize }}
+                </div>
 
-                {% if result %}
-                    {% if val == correct %} ✔{% endif %}
-                    {% if val == user and val != correct %} ✘{% endif %}
-                {% endif %}
-            </label><br>
-        {% endfor %}
-    {% elif q.type == "Multiple_Answer" %}
-        {% for c in q.choices %}
-            <label
-                {% if result %}
-                    {% if loop.index0|string in result[q.id].correct %}
-                        style="color:green; font-weight:bold;"
-                    {% elif loop.index0|string in result[q.id].user %}
-                        style="color:red;"
+                <div class="options-container">
+                    {% if q.type == "True_Or_False" %}
+                        {% set correct_ans = q.answer|string|lower %}
+                        {% set user_ans = result[q.id].user if result else None %}
+
+                        <div class="tf-group">
+                            {% for val in ["true", "false"] %}
+                                <label class="option-label 
+                                    {% if result %}
+                                        {{ 'is-correct' if val == correct_ans }}
+                                        {{ 'is-wrong' if val == user_ans and val != correct_ans }}
+                                        disabled-label
+                                    {% endif %}">
+                                    <input type="radio" name="{{ q.id }}" value="{{ val }}" 
+                                        {% if user_ans == val %}checked{% endif %}
+                                        {% if result %}disabled{% endif %}>
+                                    <span class="custom-indicator"></span>
+                                    {{ val|capitalize }}
+                                </label>
+                            {% endfor %}
+                        </div>
+
+                    {% elif q.type == "Multiple_Answer" %}
+                        {% set correct_list = result[q.id].correct if result else [] %}
+                        {% set user_list = result[q.id].user if result else [] %}
+
+                        <div class="mc-group">
+                            {% for c in q.choices %}
+                                {% set idx = loop.index0|string %}
+                                <label class="option-label 
+                                    {% if result %}
+                                        {{ 'is-correct' if idx in correct_list }}
+                                        {{ 'is-wrong' if idx in user_list and idx not in correct_list }}
+                                        disabled-label
+                                    {% endif %}">
+                                    <input type="checkbox" name="{{ q.id }}" value="{{ idx }}"
+                                        {% if idx in user_list %}checked{% endif %}
+                                        {% if result %}disabled{% endif %}>
+                                    <span class="custom-indicator checkbox-style"></span>
+                                    {{ c }}
+                                </label>
+                            {% endfor %}
+                        </div>
                     {% endif %}
-                {% endif %}
-            >
-                <input type="checkbox"
-                        name="{{ q.id }}"
-                        value="{{ loop.index0 }}"
-                        {% if result and loop.index0|string in result[q.id].user %}checked{% endif %}
-                        {% if result %}disabled{% endif %}>
-                {{ c }}
+                </div>
 
                 {% if result %}
-                    {% if loop.index0|string in result[q.id].correct %}
-                        ✔
-                    {% elif loop.index0|string in result[q.id].user %}
-                        ✘
-                    {% endif %}
+                <div class="feedback-box {{ 'success' if result[q.id].is_correct else 'error' }}">
+                    <p class="explanation-text">
+                        <strong>{{ "✔️ Correct!" if result[q.id].is_correct else "❌ Incorrect" }}</strong><br>
+                        <em>{{ result[q.id].explanation }}</em>
+                    </p>
+                </div>
                 {% endif %}
-            </label><br>
+            </div>
+            {% endfor %}
 
-        {% endfor %}
-    {% endif %}
+            <div class="quiz-footer">
+                {% if not result %}
+                    <button type="submit" class="submit-quiz-btn">Submit My Answers</button>
+                {% else %}
+                    <div class="submitted-notice">🔒 Quiz Results Locked</div>
+                {% endif %}
+                
+                <div class="nav-links">
+                    <a href="{{ url_for('news_detail', category=session['current_article_category'], article_id=session['current_article_id']) }}" class="back-link">
+                        ⬅ Back to Article
+                    </a>
+                </div>
+            </div>
 
-    {% if result %}
-        {% if result[q.id].is_correct %}
-            <p style="color:green;">✔ Correct</p>
-        {% else %}
-            <p style="color:red;">✘ Incorrect</p>
-        {% endif %}
-        <p><i>{{ result[q.id].explanation }}</i></p>
-    {% endif %}
-    
-{% endfor %}
-
-<br>
-
-{% if not result %}
-    <button type="submit">Submit Quiz</button>
-{% else %}
-    <p><b>🔒 Quiz submitted</b></p>
-{% endif %}
-
-</form>
-
-<hr>
-
-<a href="{{ url_for(
-    'news_detail',
-    category=session['current_article_category'],
-    article_id=session['current_article_id']
-) }}">
-⬅ Back to Article
-</a>
+        </form>
+    </div>
 
 </body>
 </html>

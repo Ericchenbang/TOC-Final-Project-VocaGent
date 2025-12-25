@@ -1,37 +1,13 @@
 {
-  "question": "The ___[1]___ scored a ___[2]___ while the ___[3]___ shouted, and the coach will ___[4]___ them to the ___[5]___ game ___[6]___ even after a player’s ___[7]___, using a new ___[8]___.",
+  "question": "The ___[1]___ ___[2]___ the cold night before the concert.",
   "ans": [
     {
       "idx": 1,
-      "word": "team"
+      "word": "vocalist"
     },
     {
       "idx": 2,
-      "word": "goal"
-    },
-    {
-      "idx": 3,
-      "word": "fan"
-    },
-    {
-      "idx": 4,
-      "word": "lead"
-    },
-    {
-      "idx": 5,
-      "word": "second"
-    },
-    {
-      "idx": 6,
-      "word": "away"
-    },
-    {
-      "idx": 7,
-      "word": "injury"
-    },
-    {
-      "idx": 8,
-      "word": "system"
+      "word": "endured"
     }
   ]
 }

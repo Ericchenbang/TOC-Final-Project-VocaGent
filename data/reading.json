@@ -1,68 +1,69 @@
 [
   {
-    "id": "Q1",
+    "id": "q1",
     "type": "Multiple_Answer",
-    "question": "Which of the following habits are mentioned in the article as potentially undermining professionalism in email communication?",
+    "question": "Which players are mentioned as being considered for a seam bowling spot in the Melbourne Test?",
     "choices": [
-      "Apologizing unnecessarily",
-      "Using smiley faces",
-      "Including detailed data",
-      "Adding exclamation marks",
-      "Signing off with a kiss"
+      "Michael Neser",
+      "Brendon Doggett",
+      "Jhye Richardson",
+      "Todd Murphy",
+      "Usman Khawaja"
     ],
     "correct_choices": [
       0,
       1,
-      3,
-      4
-    ],
-    "explanation": "The article lists apologising, smiley faces/emojis, exclamation marks, and kisses as habits that can diminish how seriously a writer is taken."
-  },
-  {
-    "id": "Q2",
-    "type": "True_Or_False",
-    "question": "Women use exclamation marks three times more often than men, according to the study cited in the article.",
-    "answer": true,
-    "explanation": "Hannah Salton cites a recent Journal of Experimental Social Psychology study that found women use exclamation marks three times more often than men."
-  },
-  {
-    "id": "Q3",
-    "type": "Multiple_Answer",
-    "question": "According to Hannah Salton, what can be a consequence of consistently using people‑pleasing language in emails?",
-    "choices": [
-      "Being perceived as less capable",
-      "Gaining more promotions",
-      "Being seen as overly confident",
-      "Creating an impression of not backing oneself"
-    ],
-    "correct_choices": [
-      0,
-      3
-    ],
-    "explanation": "Salton explains that a continual people‑pleasing tone can lead others to view the writer as less capable and as someone who doesn’t back themselves."
-  },
-  {
-    "id": "Q4",
-    "type": "True_Or_False",
-    "question": "William Hanson recommends using emojis in professional emails to convey warmth.",
-    "answer": false,
-    "explanation": "Hanson warns that emojis can backfire, giving an infantile connotation, and advises against using them in professional email communication."
-  },
-  {
-    "id": "Q5",
-    "type": "Multiple_Answer",
-    "question": "Which strategies do the experts suggest for reducing excessive filler in email writing without losing personality?",
-    "choices": [
-      "Reviewing drafts with AI tools",
-      "Removing all punctuation",
-      "Paying attention to the tone of received emails",
-      "Filtering out all emojis",
-      "Using more qualifiers"
-    ],
-    "correct_choices": [
-      0,
       2
     ],
-    "explanation": "Salton mentions AI tools can help strip filler, and both experts advise observing how different email styles feel to gauge excess while preserving personal style."
+    "explanation": "The article states that Michael Neser, Brendon Doggett and Jhye Richardson are vying for two places in the final XI, while Todd Murphy is an off‑spinner and Usman Khawaja is a batsman."
+  },
+  {
+    "id": "q2",
+    "type": "True_Or_False",
+    "question": "Australia have already secured the Ashes series lead at 3-0 before the Melbourne Test.",
+    "answer": true,
+    "explanation": "The article notes that Australia have already won the Ashes after moving 3-0 up in the first three Tests."
+  },
+  {
+    "id": "q3",
+    "type": "Multiple_Answer",
+    "question": "Which of the following statements about the Melbourne pitch conditions were made by Steve Smith?",
+    "choices": [
+      "The pitch has 10mm of grass.",
+      "The surface is described as \"quite furry, quite green\".",
+      "The pitch will favor spin bowling.",
+      "The conditions are cold and overcast."
+    ],
+    "correct_choices": [
+      0,
+      1,
+      3
+    ],
+    "explanation": "Smith said there is 10mm of grass on the surface, called it \"quite furry, quite green\", and described the weather as cold and overcast. He did not say the pitch would favor spin."
+  },
+  {
+    "id": "q4",
+    "type": "True_Or_False",
+    "question": "Jofra Archer was ruled out of the series due to a side strain.",
+    "answer": true,
+    "explanation": "The article mentions that pace bowler Jofra Archer has been ruled out of the series with a side strain."
+  },
+  {
+    "id": "q5",
+    "type": "Multiple_Answer",
+    "question": "Which Australian players were absent from the series due to injuries or other reasons?",
+    "choices": [
+      "Pat Cummins",
+      "Josh Hazlewood",
+      "Nathan Lyon",
+      "Todd Murphy",
+      "Steve Smith"
+    ],
+    "correct_choices": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Pat Cummins missed the Melbourne Test because of a back problem, Josh Hazlewood missed the entire series, and Nathan Lyon suffered a hamstring injury that ended his series. Todd Murphy was in the squad, and Steve Smith played as stand‑in captain."
   }
 ]

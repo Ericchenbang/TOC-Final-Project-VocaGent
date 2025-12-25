@@ -1,19 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Vocabulary Learning</title>
-    <style>
-        .sentence-box {
-            margin-top: 15px;
-            margin-right: 150px;
-            padding: 10px;
-            border: 1px solid #aaa;
-            border-radius: 5px;
-            display: none;
-        }
-    </style>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocabApp | Learning Mode</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/learn.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
     function toggleBox(id) {
@@ -24,74 +17,131 @@
     function jumpToAnchor() {
         const anchor = "{{ anchor }}";
         if (anchor) {
-            location.hash = "w_" + anchor;
+            const element = document.getElementById("w_" + anchor);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     }
+
+    function showLoadingScreen(title, text) {
+        Swal.fire({
+            title: title,
+            text: text,
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // listen to all make sentence form
+        const sentenceForms = document.querySelectorAll('.sentence-form');
+        sentenceForms.forEach(form => {
+            form.onsubmit = function() {
+                const word = this.querySelector('input[name="word"]').value;
+                showLoadingScreen(
+                    'Checking Grammar...', 
+                    `LLM is analyzing your sentence for "${word}"...`
+                );
+            };
+        });
+
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                Swal.close();
+            }
+        });
+
+        jumpToAnchor();
+    });
+
     </script>
 </head>
 
+<body class="split-body">
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Vocabulary</h3>
+                <span class="word-count">{{ words|length }} words</span>
+            </div>
+            <nav class="sidebar-nav">
+                {% for w in words %}
+                <a href="#w_{{ w.word }}" class="nav-item">
+                    <span class="nav-word">{{ w.word }}</span>
+                    <span class="nav-pos">{{ w.part_of_speech }}</span>
+                </a>
+                {% endfor %}
+            </nav>
+            <div class="sidebar-footer">
+                <!--<a href="javascript:history.back()">⬅ Back to Article</a>-->
+            
+                <a href="/" class="exit-link">🏠 Exit Learning</a>
+            </div>
+        </aside>
 
+        <main class="main-content">
+            {% for w in words %}
+            <section id="w_{{ w.word }}" class="word-detail-section">
+                <div class="word-hero">
+                    <h1 class="display-word">{{ w.word }}</h1>
+                    <span class="badge-pos">{{ w.part_of_speech }}</span>
+                </div>
 
+                <div class="info-card">
+                    <label>Translation</label>
+                    <p class="translation-text">{{ w["zh-Hant_definition"] }}</p>
+                </div>
+                <div class="info-card">
+                    <label>Standard Example</label>
+                    <p class="example-text">"{{ w.example_sentence }}"</p>
+                </div>
 
-<body onload="jumpToAnchor()">
+                <div class="practice-area">
+                    <button class="action-toggle-btn" onclick="toggleBox('box_{{ w.word }}')">
+                        🖋️ Practice this word
+                    </button>
 
-<h1>Vocabulary Learner</h1>
+                    <div id="box_{{ w.word }}" class="interactive-box" 
+                         style="display: {% if w.word in feedback %}block{% else %}none{% endif %};">
+                        
+                        <form action="/check_sentence" method="POST" class="sentence-form">
+                            <input type="hidden" name="level" value="{{ level }}">
+                            <input type="hidden" name="count" value="{{ words|length }}">
+                            <input type="hidden" name="word" value="{{ w.word }}">
 
-{% for w in words %}
-<div id="w_{{ w.word }}" style="margin-bottom: 30px;">
+                            <label class="input-label">Your sentence:</label>
+                            <textarea name="sentence" class="modern-textarea" placeholder="Use '{{ w.word }}' in a sentence..."></textarea>
+                            <button type="submit" class="submit-check-btn">Validate Sentence</button>
+                        </form>
 
-    <h2>{{ w.word }} ({{ w.part_of_speech }})</h2>
-    <p><b>Translation：</b>{{ w["zh-Hant_definition"] }}</p>
-    <p><b>Sentence：</b>{{ w.example_sentence }}</p>
+                        {% if w.word in feedback %}
+                        <div class="feedback-result {% if feedback[w.word].is_correct %}correct{% else %}incorrect{% endif %}">
+                            <div class="feedback-header">
+                                <strong>Result:</strong>
+                                <span class="status-icon">{{ "✔️ Correct" if feedback[w.word].is_correct else "❌ Review Needed" }}</span>
+                            </div>
+                            <p class="user-sent">"{{ feedback[w.word].user_sentence }}"</p>
+                            <p class="explanation">{{ feedback[w.word].explanation }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+            {% endfor %}
 
-    <button onclick="toggleBox('box_{{ w.word }}')">Let's make sentence</button>
-
-
-    <div id="box_{{ w.word }}" class="sentence-box"
-     style="display: {% if w.word in feedback %}block{% else %}none{% endif %};">
-        <form action="/check_sentence" method="POST">
-            <input type="hidden" name="level" value="{{ level }}">
-            <input type="hidden" name="count" value="{{ words|length }}">
-            <input type="hidden" name="word" value="{{ w.word }}">
-
-            <label>Please type your sentence：</label><br>
-            <textarea name="sentence" rows="3" cols="40" required></textarea>
-            <br><br>
-
-            <button type="submit">Submit your sentence</button>
-        </form>
-
-        <!-- if any word is responed, show here -->
-        {% if w.word in feedback %}
-            <h4>Result：</h4>
-            <p><b>Your sentence：</b> {{ feedback[w.word].user_sentence }}</p>
-            <p>
-                {% if feedback[w.word].is_correct %}
-                    ✔️ Correct！
-                {% else %}
-                    ❌ False...
-                {% endif %}
-            </p>
-            <p>{{ feedback[w.word].explanation }}</p>
-        {% endif %}
+            <footer class="learning-footer">
+                <h3>Finished reviewing?</h3>
+                <div class="footer-btns">
+                    <a href="/cloze" class="footer-btn cloze">📝 Cloze Test</a>
+                    <a href="/hangman" class="footer-btn hangman" onclick="showLoadingScreen('Preparing Game...', 'LLM is choosing of a word and its hint.')">🎯 Hangman</a>
+                </div>
+            </footer>
+        </main>
     </div>
-
-    <hr>
-</div>
-{% endfor %}
-
-<hr>
-<h3>Next Practice</h3>
-
-<a href="/cloze">
-    <button>📝 Cloze Test</button>
-</a>
-
-<a href="/hangman">
-    <button>🎯 Hangman</button>
-</a>
-
-<a href="/">🏠 Back to home</a>
-
 </body>
 </html>

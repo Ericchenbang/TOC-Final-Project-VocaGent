@@ -1,38 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Cloze Test</title>
-
-    <style>
-        .word {
-            display: inline-block;
-            margin: 5px 10px;
-            padding: 5px 8px;
-            border: 1px solid #aaa;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #word-bank {
-            display: flex;
-            flex-wrap: wrap;      /* auto \n */
-            gap: 10px;
-        }
-
-        .word-container {
-            display: inline-block;
-        }
-
-        .used {
-            text-decoration: line-through;
-            color: #aaa;
-            background-color: #f0f0f0;
-        }
-        .locked {
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloze Master | English Learning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cloze.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         function selectAll(source) {
@@ -43,100 +17,147 @@
         }
 
         function toggleUsed(span) {
-        if (span.classList.contains("locked")) {
-            return;
+            if (span.classList.contains("locked")) return;
+            span.classList.toggle("used");
+            const hiddenInput = span.nextElementSibling;
+            hiddenInput.disabled = !span.classList.contains("used");
         }
 
-        span.classList.toggle("used");
-
-        const hiddenInput = span.nextElementSibling;
-
-        if (span.classList.contains("used")) {
-            hiddenInput.disabled = false;
-        } else {
-            hiddenInput.disabled = true;
+        function showLoadingScreen(title, text) {
+            Swal.fire({
+                title: title,
+                text: text,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
         }
-    }
+
+        // --- check all correct ---
+        function checkCompletion() {
+            const allInputs = document.querySelectorAll('.cloze-text-area input[type="text"]');
+            if (allInputs.length === 0) return;
+
+            const allCorrect = Array.from(allInputs).every(input => input.hasAttribute('readonly'));
+
+            if (allCorrect) {
+                Swal.fire({
+                    title: '🎉 Congratulations!',
+                    text: 'You have mastered all the words in this story!',
+                    icon: 'success',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Great!',
+                    confirmButtonColor: '#3498db',
+                    timer: 5000,
+                    timerProgressBar: true
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectionForm = document.getElementById('selectionForm');
+            if (selectionForm) {
+                selectionForm.onsubmit = function() {
+                    showLoadingScreen('Writing your story...', 'LLM is crafting a unique paragraph using your chosen words.');
+                };
+            }
+
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                    Swal.close();
+                }
+            });
+
+            checkCompletion();
+        });
     </script>
 </head>
 
-<body>
+<body class="cloze-body">
+    <div class="cloze-container">
+        
+        <header class="cloze-header">
+            <h1 class="main-title">Cloze Master</h1>
+            <nav class="cloze-nav">
+                <a href="/cloze">🔁 Restart</a>
+                <a href="/hangman" onclick="showLoadingScreen('Preparing Game...', 'LLM is choosing a word and its hint.')">🎯 Hangman</a>
+                <a href="/learn">📖 Vocabulary</a>
+                <a href="/">🏠 Home</a>
+            </nav>
+        </header>
 
-<h1>Let's practice cloze</h1>
+        {% if stage == "select" %}
+        <section class="cloze-section selection-card">
+            <h2>Select Your Challenge</h2>
+            <p class="subtitle">Pick at least 2 words to generate a custom cloze story.</p>
+            
+            {% if error %}
+                <div class="alert-box error">{{ error }}</div>
+            {% endif %}
 
-<!-- ================== choose voc stage ================== -->
-{% if stage == "select" %}
-{% if error %}
-    <p style="color:red;"><b>{{ error }}</b></p>
-{% endif %}
-<h2>Choose the vocabulary you want to pratice</h2>
+            <form action="/cloze_select" method="POST" id="selectionForm">
+                <div class="selection-controls">
+                    <label class="select-all-label">
+                        <input type="checkbox" onclick="selectAll(this)">
+                        <span>Select All</span>
+                    </label>
+                </div>
 
-<form action="/cloze_select" method="POST">
-    <label>
-        <input type="checkbox" onclick="selectAll(this)">
-        <b>Select All</b>
-    </label>
-    <hr>
+                <div class="word-grid">
+                    {% for w in words %}
+                    <label class="word-checkbox-item">
+                        <input type="checkbox" name="words" value="{{ w.word }}">
+                        <div class="word-chip">{{ w.word }}</div>
+                    </label>
+                    {% endfor %}
+                </div>
 
-    {% for w in words %}
-        <label>
-            <input type="checkbox" name="words" value="{{ w.word }}">
-            {{ w.word }}
-        </label><br>
-    {% endfor %}
+                <div class="form-footer">
+                    <button type="submit" class="primary-btn">Generate Test !</button>
+                </div>
+            </form>
+        </section>
+        {% endif %}
 
-    <br>
-    <button type="submit">Start Cloze ! </button>
-</form>
+        {% if stage == "play" %}
+        <section class="cloze-section play-card">
+            <div class="play-header">
+                <h2>Fill in the Blanks</h2>
+                <p>Read the story and use the word bank below.</p>
+            </div>
 
-{% endif %}
+            <form action="/submit_cloze" method="POST">
+                <div class="cloze-text-area">
+                    {{ cloze_text | safe }}
+                </div>
 
-<!-- ================== answer stage ================== -->
-{% if stage == "play" %}
-<h1>Cloze Test </h1>
+                <div class="word-bank-wrapper">
+                    <h3>Word Bank</h3>
+                    <p class="hint">Click words to cross them out as you use them</p>
+                    <div id="word-bank">
+                        {% for w in selected_words %}
+                        <div class="word-container">
+                            <span class="word-pill
+                                  {% if used_words and w.word in used_words %}used{% endif %}
+                                  {% if locked_words and w.word in locked_words %}locked used{% endif %}"
+                                  onclick="toggleUsed(this)">
+                                {{ w.word }}
+                            </span>
+                            <input type="hidden" name="used_word" value="{{ w.word }}"
+                                   {% if not (used_words and w.word in used_words) %}disabled{% endif %}>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
 
-<form action="/submit_cloze" method="POST">
-
-    <p>{{ cloze_text | safe }}</p>
-
-    <hr>
-
-    <h3>Vocabulary</h3>
-
-    <div id="word-bank">
-        {% for w in selected_words %}
-        <div class="word-container">
-            <span class="word
-                  {% if used_words and w.word in used_words %}used{% endif %}
-                  {% if locked_words and w.word in locked_words %}locked used{% endif %}"
-                  onclick="toggleUsed(this)">
-                {{ w.word }}
-            </span>
-
-            <input type="hidden"
-                   name="used_word"
-                   value="{{ w.word }}"
-                   {% if not (used_words and w.word in used_words) %}disabled{% endif %}>
-        </div>
-        {% endfor %}
+                <div class="form-footer">
+                    <button type="submit" class="primary-btn">Submit Answer</button>
+                </div>
+            </form>
+        </section>
+        {% endif %}
     </div>
-
-    <br>
-    <button type="submit">Submit Answer</button>
-    
-</form>
-</form>
-
-<hr>
-{% endif %}
-
-
-<a href="/cloze">🔁 Restart Cloze</a> |
-<a href="/hangman">🎯 Go to Hangman</a> |
-<a href="/">🏠 Home</a>
-
 </body>
 </html>
-
-
-<!--TODO: When all correct, jump out a mention box congrates the user.-->

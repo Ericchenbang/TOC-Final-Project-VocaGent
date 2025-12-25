@@ -1,0 +1,219 @@
+/* ==========================================================================
+   Mind Map Style 3: Horizontal Pop-out (Independent Version)
+   ========================================================================== */
+
+/* 基礎重設與字體引入 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+    --mm-bg-color: #1f2b4a;
+    --mm-node-bg: rgba(255, 255, 255, 0.05);
+    --mm-node-last: #49638e;
+    --mm-primary-blue: #3b82f6;
+    --mm-text-main: #f1f5f9;
+    --mm-text-muted: #64748b;
+    --mm-line-color: rgba(255, 255, 255, 0.2);
+    --mm-transition: all 0.2s ease;
+}
+
+/* 頁面主體 */
+.horizontal-mm-body {
+    background-color: var(--mm-bg-color);
+    color: var(--mm-text-main);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* 由 viewport 容器處理滾動 */
+}
+
+.mm-app-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 頂部標題區 */
+.mm-header {
+    text-align: center;
+    padding: 30px 20px;
+    flex-shrink: 0;
+}
+
+.mm-header .badge {
+    background: rgba(59, 130, 246, 0.2);
+    color: #d0c4e8cc;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* 橫向捲動視窗佈局 */
+.mindmap-viewport {
+    flex: 1;
+    overflow: auto; 
+    padding: 60px;
+    display: flex;
+    align-items: flex-start; 
+    justify-content: flex-start;
+}
+
+.interactive-tree {
+    display: block;
+    white-space: nowrap; /* 關鍵：強制向右延伸 */
+    min-height: min-content;
+}
+
+.tree-root {
+    display: inline-block;
+    padding-top: 50px;
+}
+
+/* 節點結構佈局 */
+.mm-node {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* 末端節點（沒有子項）的樣式 */
+.mm-node:not(.has-children) > .node-wrapper {
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: var(--mm-node-last);
+}
+
+.node-wrapper {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 20px;
+    background: var(--mm-node-bg);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--mm-transition);
+    gap: 10px;
+    min-width: 150px;
+    position: relative;
+    z-index: 2;
+}
+
+.node-wrapper:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--mm-primary-blue);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+/* 子節點容器 (向右展開) */
+.child-group {
+    display: none; /* 預設收合 */
+    flex-direction: column;
+    padding-left: 100px; 
+    position: relative;
+    animation: fadeInRight 0.3s ease-out;
+    justify-content: center;
+}
+
+/* 垂直連接線：顯示在子群組左側 */
+.child-group::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20px;
+    bottom: 20px;
+    width: 3px;
+    background: var(--mm-line-color);
+}
+
+/* 水平連接線：從父節點伸出的線 */
+.mm-node.has-children.is-expanded > .node-wrapper::after {
+    content: '';
+    position: absolute;
+    right: -100px; /* 需與 padding-left 對應 */
+    top: 50%;
+    width: 100px;
+    height: 3px;
+    background: var(--mm-line-color);
+    z-index: 0;
+}
+
+.is-expanded > .child-group {
+    display: flex;
+}
+
+/* --- 層級細部樣式 --- */
+
+/* 核心根節點 */
+.level-0 > .node-wrapper {
+    background: var(--mm-node-last);
+    font-weight: 700;
+    font-size: 1.6rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* 第一層分支 */
+.level-1 > .node-wrapper {
+    background: var(--mm-node-last);
+    color: #93c5fd;
+    font-weight: 600;
+    border-color: rgba(147, 197, 253, 0.3);
+}
+
+.node-text {
+    white-space: normal; /* 文字過長時允許內部換行 */
+    max-width: 300px;
+    line-height: 1.4;
+}
+
+.toggle-indicator {
+    font-family: monospace;
+    font-weight: bold;
+    color: var(--mm-text-muted);
+}
+
+/* 浮動底欄導覽 */
+.floating-nav {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: rgba(30, 41, 59, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 20px;
+    z-index: 100;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.floating-nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.floating-nav a:hover { 
+    color: #fff; 
+}
+
+/* 動畫效果 */
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* 客製化捲軸 (適用於 Webkit 瀏覽器) */
+.mindmap-viewport::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.mindmap-viewport::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+    border: 2px solid var(--mm-bg-color);
+}
+.mindmap-viewport::-webkit-scrollbar-track {
+    background: transparent;
+}

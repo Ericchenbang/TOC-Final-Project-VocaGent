@@ -414,3 +414,125 @@ body {
         font-size: 1.1em;
     }
 }
+
+/* --- LEARNING CONTROLS STYLES (Action Bar) --- */
+
+.learning-controls-container {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-top: 30px;
+}
+
+/* 小標題，引導使用者操作 */
+.learning-controls-container .form-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* 表單行容器：使用 Flexbox 實現並排 */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+/* 內嵌表單群組：讓選項平均分佈 */
+.inline-form-group {
+    flex: 1; /* 讓兩個選項平均分佈在容器內 */
+    text-align: left;
+}
+
+.inline-form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+/* 繼承主頁的輸入框樣式，確保美觀 */
+.learning-form select,
+.learning-form input[type="number"] {
+    width: 100%;
+    padding: 10px 15px; /* 這裡略小一點，以適應並排佈局 */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #F9F9F9;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    appearance: none;
+}
+
+/* 按鈕樣式 (繼承 primary-action-btn 和 large-btn) */
+.primary-action-btn.large-btn {
+    width: 100%; /* 讓按鈕佔滿容器寬度 */
+    padding: 15px;
+}
+
+/* 響應式調整：在小螢幕上將選項堆疊顯示 */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column; /* 垂直堆疊 */
+        gap: 15px;
+    }
+    
+    .learning-controls-container {
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+}
+
+/* --- SECONDARY ACTIONS (Mindmap & Quiz) --- */
+
+.secondary-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-color); /* 增加虛線分隔感 */
+}
+
+.flex-form {
+    flex: 1; /* 讓兩個按鈕平分寬度 */
+}
+
+/* 外框線風格按鈕 */
+.outline-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.outline-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.2);
+}
+
+/* 手機版調整 */
+@media (max-width: 480px) {
+    .secondary-actions {
+        flex-direction: column; /* 手機上改為垂直堆疊 */
+        gap: 10px;
+    }
+}
+

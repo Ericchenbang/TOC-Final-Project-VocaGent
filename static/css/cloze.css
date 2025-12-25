@@ -1,0 +1,186 @@
+/* --- Cloze Master Styles --- */
+
+.cloze-body {
+    background-color: #f4f7f9;
+    font-family: 'Poppins', sans-serif;
+    color: #2c3e50;
+    margin: 0;
+    padding: 20px;
+}
+
+.cloze-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cloze-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.cloze-nav a {
+    text-decoration: none;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-left: 15px;
+    transition: color 0.3s;
+}
+
+.cloze-nav a:hover { color: #3498db; }
+
+/* --- Selection Stage --- */
+.selection-card, .play-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.word-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.word-checkbox-item input { display: none; }
+
+.word-chip {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #ecf0f1;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.word-checkbox-item input:checked + .word-chip {
+    background-color: #3498db;
+    border-color: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* --- Play Stage --- */
+.cloze-text-area {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    line-height: 2;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    color: #34495e;
+}
+
+/* 重點：美化 re.sub 生成的 input */
+.cloze-text-area input[type="text"] {
+    border: none;
+    border-bottom: 2px solid #bdc3c7;
+    background-color: #fdfdfd;
+    font-family: inherit;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #2980b9;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.3s;
+    margin: 0 5px;
+}
+
+.cloze-text-area input[type="text"]:focus {
+    border-bottom-color: #3498db;
+    background-color: #ebf5fb;
+}
+
+/* --- Word Bank --- */
+.word-bank-wrapper {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px dashed #ecf0f1;
+}
+
+.word-pill {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #fff;
+    border: 2px solid #3498db;
+    color: #3498db;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.word-pill.used {
+    text-decoration: line-through;
+    background: #f0f0f0;
+    border-color: #ddd;
+    color: #aaa;
+}
+
+.word-pill.locked {
+    cursor: not-allowed;
+    opacity: 0.7;
+    background: #e8f8f5; /* 正確答案的淡綠色感 */
+    border-color: #2ecc71;
+    color: #27ae60;
+}
+
+.primary-btn {
+    background-color: #1e293b;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.primary-btn:hover { opacity: 0.9; }
+
+.alert-box.error {
+    background: #fdf2f2;
+    color: #c53030;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+/* --- 填空框狀態顏色 --- */
+
+.cloze-text-area .cloze-input {
+    border: none;
+    border-bottom: 2px solid #bdc3c7;
+    background-color: transparent;
+    padding: 2px 8px;
+    width: 130px;
+    transition: all 0.3s;
+}
+
+.cloze-text-area .cloze-input.correct {
+    border-bottom-color: #2ecc71;
+    color: #27ae60;
+    background-color: #e8f8f5;
+    cursor: default;
+}
+
+.cloze-text-area .cloze-input.error {
+    border-bottom-color: #e74c3c;
+    color: #c0392b;
+    background-color: #fdf2f2;
+}
+
+.cloze-text-area .cloze-input.correct {
+    animation: success-glow 1.5s ease-in-out;
+}
+
+@keyframes success-glow {
+    0% { box-shadow: 0 0 0px rgba(46, 204, 113, 0); }
+    50% { box-shadow: 0 0 15px rgba(46, 204, 113, 0.5); border-color: #2ecc71; }
+    100% { box-shadow: 0 0 0px rgba(46, 204, 113, 0); }
+}
