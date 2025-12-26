@@ -1,4 +1,4 @@
-# TOC Final Project
+# TOC Final Project: VocaGent
 ## Project Introduction
 This project is an English learning system that integrates BBC News with Large Language Models (LLMs). Users can select their preferred BBC news categories, and the system automatically crawls the latest articles. Utilizing an LLM, the system then extracts a customized vocabulary list based on the user's specified CEFR level.
 
@@ -69,4 +69,43 @@ The primary goal of this project is to enable users to learn English from authen
     └── README.md                   # Project documentation
 
     
-## Installation & Setup
+## Installation & Usage
+### 1. Clone this repository
+```
+git clone https://github.com/Ericchenbang/TOC_Final_Project.git
+cd <your-repo-folder>
+```
+
+### 2. Setup Python environment
+1. Method 1
+```
+conda env create -f environment.yml --name my_env
+conda activate my_env
+```
+
+2. Method 2
+```
+pip install -r requirements.txt
+```
+
+### 3. Configure LLM API credentials
+1. macOS and Linux
+```
+export OLLAMA_API_KEYY="your_api_key_here"
+```
+
+2. Windows in PowerShell
+```
+$env:OLLAMA_API_KEY="your_api_key_here"
+```
+### 4. Run the Flask backend
+```
+flask run 
+// or
+python app.py
+```
+
+### 5. Using the web UI
+```
+http://127.0.0.1:5000/
+```

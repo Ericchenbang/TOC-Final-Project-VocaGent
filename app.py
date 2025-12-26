@@ -10,7 +10,7 @@ from english_learning_service import EnglishLearningService
 LOG_FORMAT = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
 
 logging.basicConfig(
-    level=logging.INFO, # DEBUG
+    level=logging.DEBUG, # DEBUG
     format=LOG_FORMAT,
 )
 logger = logging.getLogger(__name__)
