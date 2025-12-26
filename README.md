@@ -72,8 +72,8 @@ The primary goal of this project is to enable users to learn English from authen
 ## Installation & Usage
 ### 1. Clone this repository
 ```
-git clone https://github.com/Ericchenbang/TOC_Final_Project.git
 cd <your-repo-folder>
+git clone https://github.com/Ericchenbang/TOC_Final_Project.git
 ```
 
 ### 2. Setup Python environment
@@ -99,9 +99,12 @@ export OLLAMA_API_KEYY="your_api_key_here"
 $env:OLLAMA_API_KEY="your_api_key_here"
 ```
 ### 4. Run the Flask backend
+1. Method 1
 ```
 flask run 
-// or
+```
+2. Method 2
+```
 python app.py
 ```
 
@@ -109,3 +112,9 @@ python app.py
 ```
 http://127.0.0.1:5000/
 ```
+
+## Division of Work
+|   Student ID     | Name  |       Responsible for projects                |
+|:---------:| ------| -------------------------------|
+|  E14114174| 陳彥定 | Frontend and Backend                    |
+| C24116095 | 黃紋綺 |Agent,  BBCNewsCrawler, EnglishLearningService Class    |
