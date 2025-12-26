@@ -1,13 +1,18 @@
 # TOC Final Project: VocaGent
+## Story begind project name
+**VocaGent** is a combination of **Vocab**, an abbreviation of vocabulary, and **Agent**.
+
+It represents an AI Agent that helps users learn English vocabulary from real-world news, making word learning more active and engaging.
+
 ## Project Introduction
 This project is an English learning system that integrates BBC News with Large Language Models (LLMs). Users can select their preferred BBC news categories, and the system automatically crawls the latest articles. Utilizing an LLM, the system then extracts a customized vocabulary list based on the user's specified CEFR level.
 
 After studying the vocabulary, the system offers several practice modes to evaluate learning progress, including:
 
-- Sentence Construction Feedback: Users practice writing sentences with new words, and the LLM provides grammar checks and feedback in Chinese.
-- Cloze Tests (Fill-in-the-blanks): The LLM generates a short passage based on specific vocabularies and creates a cloze test for the user to complete.
-- Hangman Game: A classic word-guessing game using the vocabulary list. Users can spend "lives" to receive hints—provided by the LLM as English descriptions rather than direct answers.
-- Mind Mapping & Reading Comprehension: To help users grasp article structures and improve overall comprehension, the LLM generates mind map structures and customized reading quizzes based on the news content.
+- **Sentence Construction Feedback**: Users practice writing sentences with new words, and the LLM provides grammar checks and feedback in Chinese.
+- **Cloze Tests (Fill-in-the-blanks)**: The LLM generates a short passage based on specific vocabularies and creates a cloze test for the user to complete.
+- **Hangman Game**: A classic word-guessing game using the vocabulary list. Users can spend "lives" to receive hints—provided by the LLM as English descriptions rather than direct answers.
+- **Mind Mapping & Reading Comprehension quizzes**: To help users grasp article structures and improve overall comprehension, the LLM generates mind map structures and customized reading quizzes based on the news content.
 
 The primary goal of this project is to enable users to learn English from authentic news sources. By leveraging LLMs for interactive practice and real-time feedback, we aim to transform English learning into an engaging and dynamic experience.
 
@@ -49,13 +54,32 @@ The primary goal of this project is to enable users to learn English from authen
     ├── news_crawler.py             # BBC News crawler logic
     ├── data/                       # Directory for generated or static data
     │   ├── news/                   # Stores categorized news articles
+    │   │   ├── arts.json
+    │   │   ├── business.json
+    │   │   ├── culture.json
+    │   │   ├── earth.json
+    │   │   ├── innovation.json
+    │   │   ├── news.json
+    │   │   ├── sport.json
+    │   │   └── travel.json
     │   ├── vocabulary/             # Vocabulary lists and sentence feedback logs
+    |   |   ├── sentence_feedback.json
+    │   │   └── words.json
     │   ├── cloze/                  # Cloze test questions and examples
+    |   |   ├── cloze.json
+    │   │   └── input.json
     │   ├── hangman/                # Hangman word sets and descriptions
+    │   │   └── describe.txt
     │   ├── reading.json            # Sample data for reading comprehension quizzes
     │   └── mindMap.json            # Sample data for mind map structures
     ├── static/
     │   ├── css/                    # HTML stylesheets
+    │   │   ├── cloze.css
+    │   │   ├── hangman.css
+    │   │   ├── learn.css
+    │   │   ├── mindmap.css
+    │   │   ├── reading.css
+    │   │   └── style.css
     │   └── hangman/                # Hangman visual images
     ├── templates/                  # Flask HTML templates
     │   ├── index.html              # Homepage: News category selection
