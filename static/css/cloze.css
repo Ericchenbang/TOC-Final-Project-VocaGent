@@ -99,6 +99,7 @@
 .word-bank-wrapper {
     margin-top: 40px;
     padding-top: 30px;
+    margin-bottom: 20px;
     border-top: 2px dashed #ecf0f1;
 }
 
@@ -112,6 +113,20 @@
     font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
+    white-space: nowrap;
+}
+
+/* --- Word Bank 佈局優化 --- */
+#word-bank {
+    display: flex;          /* 使用 Flexbox 佈局 */
+    flex-wrap: wrap;       /* 核心：允許內容在空間不足時自動換行 */
+    gap: 12px;             /* 設定單字之間的間距 (上下左右) */
+    justify-content: flex-start; /* 從左側開始排列 */
+    margin-top: 15px;
+}
+
+.word-container {
+    display: block;        /* 在 Flex 容器下，維持 block 或 inline-block 即可 */
 }
 
 .word-pill.used {
@@ -177,6 +192,12 @@
 
 .cloze-text-area .cloze-input.correct {
     animation: success-glow 1.5s ease-in-out;
+}
+
+.form-footer {
+    margin-top: 40px;    /* 增加這個數值，讓按鈕向下推開 */
+    text-align: center;  /* 保持按鈕居中 */
+    padding-bottom: 20px; /* 底部留一點緩衝，避免太貼視窗邊緣 */
 }
 
 @keyframes success-glow {
