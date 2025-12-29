@@ -137,6 +137,9 @@ python app.py
 http://127.0.0.1:5000/
 ```
 
+## Demo
+[VocaGent 展示圖片](picture_of_project.pdf)
+
 ## Division of Work
 |   Student ID     | Name  |       Responsible for projects                |
 |:---------:| ------| -------------------------------|
