@@ -274,3 +274,22 @@
         font-size: 2.2rem;
     }
 }
+
+/* --- 提示未完成題目的動畫 --- */
+.shake-highlight {
+    border-color: var(--error-red) !important;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+    animation: quiz-shake 0.5s ease-in-out;
+}
+
+@keyframes quiz-shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+/* 確保 Swal 的字體與網頁一致 */
+.swal2-popup {
+    font-family: 'Poppins', sans-serif !important;
+    border-radius: 16px !important;
+}

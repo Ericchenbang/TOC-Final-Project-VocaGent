@@ -6,22 +6,69 @@
     <title>Reading Quiz | Explorer</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reading.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script>
-        // check if every questions are wrote
-        function validateQuiz() {
+        function validateQuiz(event) {
+            let firstUnansweredIdx = null;
+            let firstUnansweredId = null;
+
+            // 遍歷檢查每一題
             {% for q in questions %}
                 {% if q.type == "True_Or_False" %}
                     if (!document.querySelector('input[name="{{ q.id }}"]:checked')) {
-                        alert("Please answer Question {{ loop.index }}.");
-                        return false;
+                        if (!firstUnansweredId) {
+                            firstUnansweredId = "{{ q.id }}";
+                            firstUnansweredIdx = {{ loop.index }};
+                        }
                     }
                 {% elif q.type == "Multiple_Answer" %}
                     if (document.querySelectorAll('input[name="{{ q.id }}"]:checked').length === 0) {
-                        alert("Please select at least one answer for Question {{ loop.index }}.");
-                        return false;
+                        if (!firstUnansweredId) {
+                            firstUnansweredId = "{{ q.id }}";
+                            firstUnansweredIdx = {{ loop.index }};
+                        }
                     }
                 {% endif %}
             {% endfor %}
+
+            
+            if (firstUnansweredId) {
+                if (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                if (document.activeElement) {
+                    document.activeElement.blur();
+                }
+
+                const inputElement = document.getElementsByName(firstUnansweredId)[0];
+                const targetCard = inputElement ? inputElement.closest('.question-card') : null;
+
+                if (targetCard) {
+                    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Wait a minute...',
+                    text: `You missed Question ${firstUnansweredIdx}. Please complete it!`,
+                    confirmButtonColor: '#1e293b',
+                    confirmButtonText: 'Go back',
+                    allowOutsideClick: false, 
+                    scrollbarPadding: false    
+                }).then(() => {
+                    if (targetCard) {
+                        setTimeout(() => {
+                            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            targetCard.classList.add('shake-highlight');
+                            setTimeout(() => targetCard.classList.remove('shake-highlight'), 1000);
+                        }, 50); 
+                    }
+                });
+                return false;
+            }
             return true;
         }
     </script>
@@ -34,20 +81,16 @@
                 <span class="quiz-badge">Article Comprehension</span>
                 <h1>📖 Reading Quiz</h1>
             </div>
-            
             <div class="quiz-progress-bar">
                 {% for q in questions %}
-                    <div class="progress-step 
-                        {% if result %}
-                            {{ 'correct' if result[q.id].is_correct else 'incorrect' }}
-                        {% endif %}">
+                    <div class="progress-step {% if result %}{{ 'correct' if result[q.id].is_correct else 'incorrect' }}{% endif %}">
                         {{ loop.index }}
                     </div>
                 {% endfor %}
             </div>
         </header>
 
-        <form action="/submit_reading" method="POST" onsubmit="return validateQuiz();" class="quiz-form">
+        <form action="/submit_reading" method="POST" onsubmit="return validateQuiz(event);" class="quiz-form">
             
             {% for q in questions %}
             <div class="question-card">
@@ -66,12 +109,7 @@
 
                         <div class="tf-group">
                             {% for val in ["true", "false"] %}
-                                <label class="option-label 
-                                    {% if result %}
-                                        {{ 'is-correct' if val == correct_ans }}
-                                        {{ 'is-wrong' if val == user_ans and val != correct_ans }}
-                                        disabled-label
-                                    {% endif %}">
+                                <label class="option-label {% if result %}{{ 'is-correct' if val == correct_ans }} {{ 'is-wrong' if val == user_ans and val != correct_ans }} disabled-label{% endif %}">
                                     <input type="radio" name="{{ q.id }}" value="{{ val }}" 
                                         {% if user_ans == val %}checked{% endif %}
                                         {% if result %}disabled{% endif %}>
@@ -88,12 +126,7 @@
                         <div class="mc-group">
                             {% for c in q.choices %}
                                 {% set idx = loop.index0|string %}
-                                <label class="option-label 
-                                    {% if result %}
-                                        {{ 'is-correct' if idx in correct_list }}
-                                        {{ 'is-wrong' if idx in user_list and idx not in correct_list }}
-                                        disabled-label
-                                    {% endif %}">
+                                <label class="option-label {% if result %}{{ 'is-correct' if idx in correct_list }} {{ 'is-wrong' if idx in user_list and idx not in correct_list }} disabled-label{% endif %}">
                                     <input type="checkbox" name="{{ q.id }}" value="{{ idx }}"
                                         {% if idx in user_list %}checked{% endif %}
                                         {% if result %}disabled{% endif %}>
@@ -129,9 +162,7 @@
                     </a>
                 </div>
             </div>
-
         </form>
     </div>
-
 </body>
 </html>
